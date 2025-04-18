@@ -9,8 +9,10 @@ import { connectDB } from './config/configDB.js';
 import authRoute from './routes/auth.route.js'
 import bookRoute from './routes/book.route.js'
 
-const app = express()
+import job from './lib/cron.js';
 
+const app = express()
+job.start()
 // middlewares
 dotenv.config()
 app.use(express.json())
