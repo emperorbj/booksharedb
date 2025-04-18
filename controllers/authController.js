@@ -11,7 +11,7 @@ export const register = async (request,response)=>{
 	const {name,email,password} = request.body;
   try{
   	if(!name || !email || !password){
-		return response.status(401).json("all fields are required")
+		return response.status(401).json({success:false,message:"all fields are required"})
     }
 
 	const userExists = await User.findOne({email})
