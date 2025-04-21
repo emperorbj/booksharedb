@@ -51,7 +51,12 @@ export const getAllBooks = async (request, response) => {
             return response.status(404).json('no books found')
         }
 
-        return response.status(200).json({ success: true, books })
+        const totalBooks = await Book.countDocuments(queryObject);
+        const totalPages = Math.ceil(totalBooks / parsedLimit);
+
+        return response.status(200).json({ success: true, books,currentPage: parsedPage,
+            totalPages,
+            totalBooks, })
 
 
     } catch (error) {
