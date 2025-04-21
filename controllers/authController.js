@@ -39,7 +39,8 @@ export const register = async (request,response)=>{
 		id:user._id,
 		name:user.name,
 		email:user.email,
-		profileImage:user.profileImage
+		profileImage:user.profileImage,
+		createdAt:user.createdAt,
 	}})
   }catch(error){
   	return response.status(500).json({message:"something went wrong",error:error.message}) 
@@ -73,7 +74,8 @@ try{
 	id:user._id,
 	name:user.name,
 	email:user.email,
-	profileImage:user.profileImage
+	profileImage:user.profileImage,
+	createdAt:user.createdAt,
 }})
 }catch(error){
 	return response.status(500).json({success:false,message:error.message})
